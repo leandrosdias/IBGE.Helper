@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBGE.Helper", "IBGE.Helper\IBGE.Helper.csproj", "{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CFC67A3-8CC8-4660-A15D-A2E627CCAFEE}
+	EndGlobalSection
+EndGlobal
