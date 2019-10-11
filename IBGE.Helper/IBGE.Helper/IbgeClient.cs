@@ -73,7 +73,7 @@ namespace IBGE.Helper
             }
         }
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesoregiaoByMacroregiao(List<int> ids)
+        public async Task<IEnumerable<Mesorregiao>> GetMesoregiaoByMacroregiaoAsync(List<int> ids)
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", ids)}/mesorregioes";
 
