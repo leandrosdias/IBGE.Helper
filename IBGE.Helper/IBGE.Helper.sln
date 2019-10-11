@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBGE.Helper", "IBGE.Helper\IBGE.Helper.csproj", "{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBGE.Helper.Tests", "..\IBGE.Helper.Tests\IBGE.Helper.Tests.csproj", "{EAAA2DB3-0B59-47CA-95ED-DB2445959B94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1618C1F9-FD1B-4F52-865D-7ECC8AAA6DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAAA2DB3-0B59-47CA-95ED-DB2445959B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAAA2DB3-0B59-47CA-95ED-DB2445959B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAAA2DB3-0B59-47CA-95ED-DB2445959B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAAA2DB3-0B59-47CA-95ED-DB2445959B94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
