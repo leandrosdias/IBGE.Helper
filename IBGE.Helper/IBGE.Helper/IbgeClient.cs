@@ -24,7 +24,7 @@ namespace IBGE.Helper
 
         #region Mesorregiões 
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesoregiaoAsync()
+        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoAsync()
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes";
 
@@ -39,7 +39,7 @@ namespace IBGE.Helper
             }
         }
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesoregiaoByUfAsync(List<int> ufIds)
+        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoByUfAsync(List<int> ufIds)
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/estados/{string.Join("|", ufIds)}/microrregioes";
 
@@ -54,7 +54,7 @@ namespace IBGE.Helper
             }
         }
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesoregiaoByIdAsync(List<int> ids)
+        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoByIdAsync(List<int> ids)
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes/{string.Join("|", ids)}";
 
@@ -73,7 +73,7 @@ namespace IBGE.Helper
             }
         }
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesoregiaoByMacroregiaoAsync(List<int> ids)
+        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoByMacrorregiaoAsync(List<int> ids)
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", ids)}/mesorregioes";
 
@@ -88,7 +88,11 @@ namespace IBGE.Helper
                 return JsonConvert.DeserializeObject<List<Mesorregiao>>(jsonResponse);
             }
         }
-        
+
+        #endregion
+
+        #region Microrregiôes
+
         #endregion
 
         #region Municipio
@@ -108,7 +112,7 @@ namespace IBGE.Helper
                 return JsonConvert.DeserializeObject<List<Municipio>>(jsonResponse);
             }
         }
-        
+
         #endregion
 
     }
