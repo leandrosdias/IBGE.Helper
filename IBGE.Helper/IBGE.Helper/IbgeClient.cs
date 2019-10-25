@@ -73,9 +73,9 @@ namespace IBGE.Helper
             }
         }
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoByMacrorregiaoAsync(List<int> ids)
+        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoByMacrorregiaoAsync(List<int> macroIds)
         {
-            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", ids)}/mesorregioes";
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", macroIds)}/mesorregioes";
 
             using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
             {
@@ -91,7 +91,87 @@ namespace IBGE.Helper
 
         #endregion
 
-        #region Microrregiôes
+        #region Microrregiões
+
+        public async Task<IEnumerable<Microrregiao>> GetMicrorregiaoAsync()
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/microrregioes";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Microrregiao>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Microrregiao>> GetMicrorregiaoByUfAsync(List<int> ufIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/estados/{string.Join("|", ufIds)}/microrregioes";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Microrregiao>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Microrregiao>> GetMicrorregiaoByMesorregiaoAsync(List<int> mesoIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes/{string.Join("|", mesoIds)}/microrregioes";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Microrregiao>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Microrregiao>> GetMicroregiaoByIdAsync(List<int> ids)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/microrregioes/{string.Join("|", ids)}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                if (ids.Count > 1)
+                    return JsonConvert.DeserializeObject<List<Microrregiao>>(jsonResponse);
+                else
+                    return new List<Microrregiao> { JsonConvert.DeserializeObject<Microrregiao>(jsonResponse) };
+            }
+        }
+
+        public async Task<IEnumerable<Microrregiao>> GetMicroregiaoByMacrorregiaoAsync(List<int> macrosId)
+        {
+
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", macrosId)}/microrregioes";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Microrregiao>>(jsonResponse);
+            }
+        }
 
         #endregion
 
