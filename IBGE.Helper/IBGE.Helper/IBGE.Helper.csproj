@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IbgeClient.cs" />
+    <Compile Include="Models\Distrito.cs" />
     <Compile Include="Models\Mesorregiao.cs" />
     <Compile Include="Models\Microrregiao.cs" />
     <Compile Include="Models\Municipio.cs" />

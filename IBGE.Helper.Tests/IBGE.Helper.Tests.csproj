@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistritoTests.cs" />
     <Compile Include="MesorregiaoTests.cs" />
     <Compile Include="MicrorregiaoTests.cs" />
     <Compile Include="MunicipioTests.cs" />
