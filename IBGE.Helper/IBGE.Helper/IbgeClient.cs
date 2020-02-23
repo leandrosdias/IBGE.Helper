@@ -24,7 +24,7 @@ namespace IBGE.Helper
 
         #region Mesorregiões 
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesoregionAsync()
+        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoAsync()
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes";
 
@@ -275,7 +275,44 @@ namespace IBGE.Helper
 
         #endregion
 
-        
+        #region Regiões
+
+        public async Task<IEnumerable<Regiao>> GetRegioesAsync()
+        {
+
+            var url = "https://servicodados.ibge.gov.br/api/v1/localidades/regioes";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Regiao>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Regiao>> GetRegioesByIdAsync(List<int> ids)
+        {
+
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join(" | ", ids)}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                if (ids.Count > 1)
+                    return JsonConvert.DeserializeObject<List<Regiao>>(jsonResponse);
+                else
+                    return new List<Regiao> { JsonConvert.DeserializeObject<Regiao>(jsonResponse) };
+            }
+        }
+
+        #endregion Regiões
 
     }
 }
