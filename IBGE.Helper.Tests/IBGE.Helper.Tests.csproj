@@ -52,6 +52,7 @@
     <Compile Include="MunicipioTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegiaoTests.cs" />
+    <Compile Include="UfTests.cs" />
     <Compile Include="Utils\InternetAvailability.cs" />
   </ItemGroup>
   <ItemGroup>

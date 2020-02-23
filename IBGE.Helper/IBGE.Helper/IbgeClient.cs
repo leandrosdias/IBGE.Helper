@@ -314,5 +314,57 @@ namespace IBGE.Helper
 
         #endregion Regiões
 
+        #region UF
+
+        public async Task<IEnumerable<Uf>> GetUfsAsync()
+        {
+            var url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Uf>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Uf>> GetUfsByIdAsync(List<int> ids)
+        {
+
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/estados/{string.Join(" | ", ids)}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                if (ids.Count > 1)
+                    return JsonConvert.DeserializeObject<List<Uf>>(jsonResponse);
+                else
+                    return new List<Uf> { JsonConvert.DeserializeObject<Uf>(jsonResponse) };
+            }
+        }
+
+        public async Task<IEnumerable<Uf>> GetUfsByRegionAsync(List<int> regionIdList)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join(" | ", regionIdList)}/estados";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Uf>>(jsonResponse);
+            }
+        }
+
+        #endregion UF
     }
 }
