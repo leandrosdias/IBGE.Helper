@@ -24,7 +24,7 @@ namespace IBGE.Helper
 
         #region Mesorregiões 
 
-        public async Task<IEnumerable<Mesorregiao>> GetMesorregiaoAsync()
+        public async Task<IEnumerable<Mesorregiao>> GetMesoregionAsync()
         {
             var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes";
 
@@ -193,7 +193,89 @@ namespace IBGE.Helper
             }
         }
 
+        public async Task<IEnumerable<Municipio>> GetMunicipiosByIdAsync(List<int> ids)
+        {
+
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/municipios/{string.Join(" | ", ids)}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                if (ids.Count > 1)
+                    return JsonConvert.DeserializeObject<List<Municipio>>(jsonResponse);
+                else
+                    return new List<Municipio> { JsonConvert.DeserializeObject<Municipio>(jsonResponse) };
+            }
+        }
+
+        public async Task<IEnumerable<Municipio>> GetMunicipiosByUfAsync(List<int> ufList)
+        {
+
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/estados/{string.Join("|", ufList)}/municipios";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Municipio>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Municipio>> GetMunicipiosByMesorregiaoAsync(List<int> mesoIdList)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes/{string.Join("|", mesoIdList)}/municipios";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Municipio>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Municipio>> GetMunicipiosByMicrorregiaoAsync(List<int> microIdList)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/microrregioes/{string.Join("|", microIdList)}/municipios";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Municipio>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<Municipio>> GetMunicipiosByRegionAsync(List<int> macroIdList)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", macroIdList)}/municipios";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Municipio>>(jsonResponse);
+            }
+        }
+
         #endregion
+
+        
 
     }
 }
