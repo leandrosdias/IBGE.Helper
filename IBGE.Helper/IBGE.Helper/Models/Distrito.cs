@@ -1,9 +1,9 @@
 ﻿namespace IBGE.Helper.Models
 {
-    public class Mesorregiao
+    public class Distrito
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public Uf Uf { get; set; }
-    }
+        public Municipio Municipio { get; set; }
+    }   
 }

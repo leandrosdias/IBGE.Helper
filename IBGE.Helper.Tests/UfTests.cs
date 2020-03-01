@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace IBGE.Helper.Tests
 {
     [TestFixture]
-    public class MesoregiaoTests
+    public class UfTests
     {
         [Test]
-        public async Task GetAllMesoregiaoTestAsync()
+        public async Task GetAllUfsTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -21,14 +21,14 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMesoregiaoAsync();
+            var result = await client.GetUfsAsync();
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
 
         [Test]
-        public async Task GetMesoregiaoByUfTestAsync()
+        public async Task GetAllUfsByIdTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -37,14 +37,14 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMesoregiaoByUfAsync(new List<int> { 33, 35 });
+            var result = await client.GetUfsByIdAsync(new List<int> { 33 });
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
 
         [Test]
-        public async Task GetMesoregiaoByIdTestAsync()
+        public async Task GetAllUfsByRegionTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -53,23 +53,7 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMesoregiaoByIdAsync(new List<int> { 3302, 3509 });
-
-            Assert.IsNotNull(result);
-            Assert.GreaterOrEqual(result.ToList().Count, 1);
-        }
-
-        [Test]
-        public async Task GetMesoregiaoByMacroregiaoTestAsync()
-        {
-            if (!InternetAvailability.IsInternetAvailable())
-            {
-                Assert.Inconclusive();
-                return;
-            }
-
-            var client = new IbgeClient();
-            var result = await client.GetMesoregiaoByMacroregiaoAsync(new List<int> { 3,4 });
+            var result = await client.GetUfsByRegionAsync(new List<int> { 3 });
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);

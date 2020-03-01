@@ -3,15 +3,16 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace IBGE.Helper.Tests
 {
     [TestFixture]
-    public class MunicipioTests
+    class DistritoTests
     {
         [Test]
-        public async Task GetAllMunicipioTestAsync()
+        public async Task GetAllDistritosTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -20,14 +21,14 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMunicipiosAsync();
+            var result = await client.GetDistritosAsync();
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
 
         [Test]
-        public async Task GetAllMunicipioByIdTestAsync()
+        public async Task GetAllDistritosByIdTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -36,30 +37,14 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMunicipiosByIdAsync(new List<int> { 1600303 });
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result.ToList().Count, 1);
-        }
-
-        [Test]
-        public async Task GetAllMunicipioByUfTestAsync()
-        {
-            if (!InternetAvailability.IsInternetAvailable())
-            {
-                Assert.Inconclusive();
-                return;
-            }
-
-            var client = new IbgeClient();
-            var result = await client.GetMunicipiosByUfAsync(new List<int> { 33 });
+            var result = await client.GetDistritosByIdAsync(new List<int> { 160030312 });
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
 
         [Test]
-        public async Task GetAllMunicipioByMesorregiaoTestAsync()
+        public async Task GetAllDistritosByUfsTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -68,14 +53,14 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMunicipiosByMesorregiaoAsync(new List<int> { 3301 });
+            var result = await client.GetDistritosByUfsAsync(new List<int> { 33 });
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
 
         [Test]
-        public async Task GetAllMunicipioByMicrorregiaoTestAsync()
+        public async Task GetAllDistritosByMesorregiaoTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -84,14 +69,14 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMunicipiosByMicrorregiaoAsync(new List<int> { 33001 });
+            var result = await client.GetDistritosByMesorregiaoAsync(new List<int> { 1602 });
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
 
         [Test]
-        public async Task GetAllMunicipioByRegionTestAsync()
+        public async Task GetAllDistritosByMicrorregiaoTestAsync()
         {
             if (!InternetAvailability.IsInternetAvailable())
             {
@@ -100,7 +85,39 @@ namespace IBGE.Helper.Tests
             }
 
             var client = new IbgeClient();
-            var result = await client.GetMunicipiosByRegionAsync(new List<int> { 3 });
+            var result = await client.GetDistritosByMicrorregiaoAsync(new List<int> { 16003 });
+
+            Assert.IsNotNull(result);
+            Assert.GreaterOrEqual(result.ToList().Count, 1);
+        }
+
+        [Test]
+        public async Task GetAllDistritosByMunicipioTestAsync()
+        {
+            if (!InternetAvailability.IsInternetAvailable())
+            {
+                Assert.Inconclusive();
+                return;
+            }
+
+            var client = new IbgeClient();
+            var result = await client.GetDistritosByMunicipiosAsync(new List<int> { 3550308 });
+
+            Assert.IsNotNull(result);
+            Assert.GreaterOrEqual(result.ToList().Count, 1);
+        }
+
+        [Test]
+        public async Task GetAllDistritosByRegiaoTestAsync()
+        {
+            if (!InternetAvailability.IsInternetAvailable())
+            {
+                Assert.Inconclusive();
+                return;
+            }
+
+            var client = new IbgeClient();
+            var result = await client.GetDistritosByRegioesAsync(new List<int> { 3 });
 
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
