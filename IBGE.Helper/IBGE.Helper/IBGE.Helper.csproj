@@ -50,6 +50,7 @@
     <Compile Include="Models\Microrregiao.cs" />
     <Compile Include="Models\Municipio.cs" />
     <Compile Include="Models\Regiao.cs" />
+    <Compile Include="Models\SubDistrito.cs" />
     <Compile Include="Models\Uf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

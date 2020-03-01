@@ -312,7 +312,7 @@ namespace IBGE.Helper
             }
         }
 
-        #endregion Regiões
+        #endregion
 
         #region UF
 
@@ -365,7 +365,7 @@ namespace IBGE.Helper
             }
         }
 
-        #endregion UF
+        #endregion
 
         #region Distrito
 
@@ -474,7 +474,129 @@ namespace IBGE.Helper
             }
         }
 
-        #endregion Distrito
+        #endregion
 
+        #region SubDistritos
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosAsync()
+        {
+            var url = "https://servicodados.ibge.gov.br/api/v1/localidades/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByIdAsync(List<ulong> ids)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/subdistritos/{string.Join(" | ", ids)}";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByUfsAsync(List<int> ufIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/estados/{string.Join("|", ufIds)}/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByMesorregiaoAsync(List<int> mesoIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/mesorregioes/{string.Join("|", mesoIds)}/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByMicrorregiaoAsync(List<int> microIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/microrregioes/{string.Join("|", microIds)}/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByMunicipiosAsync(List<int> municipiosIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/municipios/{string.Join("|", municipiosIds)}/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByRegioesAsync(List<int> regioesIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/regioes/{string.Join("|", regioesIds)}/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+
+        public async Task<IEnumerable<SubDistrito>> GetSubDistritosByDistritosAsync(List<int> distritoIds)
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v1/localidades/distritos/{string.Join("|", distritoIds)}/subdistritos";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<SubDistrito>>(jsonResponse);
+            }
+        }
+        #endregion
     }
 }
