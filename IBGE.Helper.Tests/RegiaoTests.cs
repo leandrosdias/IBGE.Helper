@@ -20,7 +20,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetRegioesAsync();
 
             Assert.IsNotNull(result);
@@ -36,7 +36,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetRegioesByIdAsync(new List<int> { 1 });
 
             Assert.IsNotNull(result);

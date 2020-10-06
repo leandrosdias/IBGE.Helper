@@ -18,7 +18,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosAsync();
 
             Assert.IsNotNull(result);
@@ -34,7 +34,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosByIdAsync(new List<ulong> { 53001080517 });
 
             Assert.IsNotNull(result);
@@ -50,7 +50,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosByUfsAsync(new List<int> { 33 });
 
             Assert.IsNotNull(result);
@@ -66,7 +66,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosByMesorregiaoAsync(new List<int> { 4305 });
 
             Assert.IsNotNull(result);
@@ -82,7 +82,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosByMicrorregiaoAsync(new List<int> { 11001 });
 
             Assert.IsNotNull(result);
@@ -98,7 +98,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosByMunicipiosAsync(new List<int> { 3304557 });
 
             Assert.IsNotNull(result);
@@ -114,7 +114,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetSubDistritosByRegioesAsync(new List<int> { 3 });
 
             Assert.IsNotNull(result);
