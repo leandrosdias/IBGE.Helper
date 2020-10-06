@@ -19,7 +19,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMunicipiosAsync();
 
             Assert.IsNotNull(result);
@@ -35,7 +35,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMunicipiosByIdAsync(new List<int> { 1600303 });
 
             Assert.IsNotNull(result);
@@ -51,7 +51,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMunicipiosByUfAsync(new List<int> { 33 });
 
             Assert.IsNotNull(result);
@@ -67,7 +67,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMunicipiosByMesorregiaoAsync(new List<int> { 3301 });
 
             Assert.IsNotNull(result);
@@ -83,7 +83,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMunicipiosByMicrorregiaoAsync(new List<int> { 33001 });
 
             Assert.IsNotNull(result);
@@ -99,7 +99,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMunicipiosByRegionAsync(new List<int> { 3 });
 
             Assert.IsNotNull(result);

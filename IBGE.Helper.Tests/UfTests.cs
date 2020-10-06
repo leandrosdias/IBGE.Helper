@@ -20,7 +20,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetUfsAsync();
 
             Assert.IsNotNull(result);
@@ -36,7 +36,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetUfsByIdAsync(new List<int> { 33 });
 
             Assert.IsNotNull(result);
@@ -52,7 +52,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetUfsByRegionAsync(new List<int> { 3 });
 
             Assert.IsNotNull(result);
