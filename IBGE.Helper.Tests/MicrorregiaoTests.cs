@@ -18,7 +18,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMicrorregiaoAsync();
 
             Assert.IsNotNull(result);
@@ -34,7 +34,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMicrorregiaoByUfAsync(new List<int> { 33, 35 });
 
             Assert.IsNotNull(result);
@@ -54,7 +54,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMicrorregiaoByMesorregiaoAsync(new List<int> { 3303, 3304 });
 
             Assert.IsNotNull(result);
@@ -74,7 +74,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMicroregiaoByIdAsync(new List<int> { 33007, 31007 });
 
             Assert.IsNotNull(result);
@@ -94,7 +94,7 @@ namespace IBGE.Helper.Tests
                 return;
             }
 
-            var client = new IbgeClient();
+            var client = new IbgeLocalidadeClient();
             var result = await client.GetMicroregiaoByMacrorregiaoAsync(new List<int> { 3, 4 });
 
             Assert.IsNotNull(result);
