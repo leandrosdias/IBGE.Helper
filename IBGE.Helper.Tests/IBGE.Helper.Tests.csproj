@@ -51,6 +51,7 @@
     <Compile Include="MesorregiaoTests.cs" />
     <Compile Include="MicrorregiaoTests.cs" />
     <Compile Include="MunicipioTests.cs" />
+    <Compile Include="NamesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegiaoTests.cs" />
     <Compile Include="SubDistritoTests.cs" />
