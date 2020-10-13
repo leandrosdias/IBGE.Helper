@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace IBGE.Helper
 {
-    public class IbgeClient
+    public class IbgeLocalidadeClient
     {
         private readonly HttpClient _httpClient;
-        public IbgeClient()
+        public IbgeLocalidadeClient()
         {
             HttpClientHandler handler = new HttpClientHandler()
             {
