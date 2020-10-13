@@ -21,6 +21,13 @@ namespace IBGE.Helper.Models.Nomes
                     Localidade = nome.Localidade,
                 };
 
+                if(frequency.Periodo == null)
+                {
+                    nameFrequency.Frequency = frequency.Frequencia;
+                    result.Add(nameFrequency);
+                    continue;
+                }
+
                 var yearsStr = frequency.Periodo.Split(',');
                 if (yearsStr.Length == 1)
                 {

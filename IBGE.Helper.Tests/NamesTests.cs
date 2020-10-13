@@ -46,5 +46,21 @@ namespace IBGE.Helper.Tests
             Assert.IsNotNull(result);
             Assert.GreaterOrEqual(result.ToList().Count, 1);
         }
+
+        [Test]
+        public async Task GetNamesByRankingTestAsync()
+        {
+            if (!InternetAvailability.IsInternetAvailable())
+            {
+                Assert.Inconclusive();
+                return;
+            }
+
+            var client = new IbgeNomeClient();
+            var result = await client.GetNamesByRankingAsync();
+
+            Assert.IsNotNull(result);
+            Assert.GreaterOrEqual(result.ToList().Count, 1);
+        }
     }
 }

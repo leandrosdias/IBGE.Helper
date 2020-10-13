@@ -34,5 +34,20 @@ namespace IBGE.Helper
                 return JsonConvert.DeserializeObject<List<Nomes>>(jsonResponse);
             }
         }
+
+        public async Task<IEnumerable<Nomes>> GetNamesByRankingAsync()
+        {
+            var url = $"https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking";
+
+            using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+            {
+                var response = await _httpClient.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
+                    return null;
+
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<Nomes>>(jsonResponse);
+            }
+        }
     }
 }

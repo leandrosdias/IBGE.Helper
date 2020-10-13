@@ -25,6 +25,8 @@ namespace IBGE.Helper.Models.Nomes
         public string Periodo { get; set; }
         [JsonProperty("frequencia")]
         public int Frequencia { get; set; }
+        [JsonProperty("nome")]
+        public string Nome { get; set; }
     }
 
     public class NameFrequency
