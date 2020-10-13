@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IbgeLocalidadeClient.cs" />
+    <Compile Include="IbgeNomeClient.cs" />
     <Compile Include="Models\Localidades\Distrito.cs" />
     <Compile Include="Models\Localidades\Mesorregiao.cs" />
     <Compile Include="Models\Localidades\Microrregiao.cs" />
@@ -52,6 +53,8 @@
     <Compile Include="Models\Localidades\Regiao.cs" />
     <Compile Include="Models\Localidades\SubDistrito.cs" />
     <Compile Include="Models\Localidades\Uf.cs" />
+    <Compile Include="Models\Nomes\Nomes.cs" />
+    <Compile Include="Models\Nomes\UtilsNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
